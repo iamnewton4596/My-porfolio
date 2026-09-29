@@ -209,6 +209,23 @@ ul.clean li::before{content:"";position:absolute;left:0;top:.72em;width:.4rem;he
 
 footer{border-top:1px solid var(--rule);padding-block:2rem;font-size:var(--s-xs);color:var(--ink-2)}
 footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-between}
+
+/* ---------- decorative motifs: DNA helix behind portrait, PCB traces between blocks ---------- */
+.hero{position:relative}
+.hero-grid{position:relative;z-index:1}
+#helix{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.circuit{display:block;width:100%;height:92px;color:var(--ink-2)}
+.circuit .tr{fill:none;stroke:currentColor;stroke-opacity:.28;stroke-width:1.2;vector-effect:non-scaling-stroke}
+.circuit .via{fill:var(--paper);stroke:currentColor;stroke-opacity:.45;stroke-width:1.2}
+.circuit .chip{fill:var(--paper);stroke:currentColor;stroke-opacity:.5;stroke-width:1.2}
+.circuit .pin{stroke:currentColor;stroke-opacity:.4;stroke-width:1.2}
+.circuit text{font:500 10px var(--f-mono);letter-spacing:.18em;fill:var(--ink-2)}
+.circuit .pulse{fill:none;stroke:var(--amber);stroke-width:2;stroke-linecap:round;stroke-dasharray:16 1400;animation:flow 7s linear infinite}
+.circuit .pulse.b{stroke:var(--pasteur);animation-duration:9s}
+.circuit .led{fill:var(--amber);animation:blink 2.4s ease-in-out infinite}
+@keyframes flow{from{stroke-dashoffset:0}to{stroke-dashoffset:-1416}}
+@keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
+@media (prefers-reduced-motion: reduce){.circuit .pulse{display:none}.circuit .led{animation:none;opacity:.8}}
 </style>
 </head>
 <body>
@@ -232,6 +249,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
 
 <main id="top">
   <div class="wrap hero">
+    <canvas id="helix" aria-hidden="true"></canvas>
     <div class="hero-grid">
       <div>
         <p class="label"><span lang="en">Scientific computing · Statistical genomics · Dakar, Senegal</span><span lang="fr">Calcul scientifique · Génomique statistique · Dakar, Sénégal</span></p>
@@ -279,6 +297,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
       </div>
     </div>
   </div>
+
+  <svg class="circuit" viewBox="0 0 1200 90" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><path class="tr" d="M540 30 H420 L402 12 H180 L165 27 H0"/><path class="tr" d="M540 45 H300 L285 60 H90 L75 45 H0"/><path class="tr" d="M540 60 H460 L442 78 H240 L228 66"/><path class="tr" d="M660 30 H780 L798 12 H1020 L1035 27 H1200"/><path class="tr" d="M660 45 H900 L915 60 H1110 L1125 45 H1200"/><path class="tr" d="M660 60 H740 L758 78 H960 L972 66"/><path class="pulse" d="M540 30 H420 L402 12 H180 L165 27 H0" style="animation-delay:0s"/><path class="pulse b" d="M540 45 H300 L285 60 H90 L75 45 H0" style="animation-delay:-2.3s"/><path class="pulse" d="M540 60 H460 L442 78 H240 L228 66" style="animation-delay:-4.6s"/><path class="pulse" d="M660 30 H780 L798 12 H1020 L1035 27 H1200" style="animation-delay:-1.2s"/><path class="pulse b" d="M660 45 H900 L915 60 H1110 L1125 45 H1200" style="animation-delay:-3.5s"/><path class="pulse" d="M660 60 H740 L758 78 H960 L972 66" style="animation-delay:-5.8s"/><path class="pin" d="M552 18 V10 M552 72 V80"/><path class="pin" d="M564 18 V10 M564 72 V80"/><path class="pin" d="M576 18 V10 M576 72 V80"/><path class="pin" d="M588 18 V10 M588 72 V80"/><path class="pin" d="M600 18 V10 M600 72 V80"/><path class="pin" d="M612 18 V10 M612 72 V80"/><path class="pin" d="M624 18 V10 M624 72 V80"/><path class="pin" d="M636 18 V10 M636 72 V80"/><path class="pin" d="M648 18 V10 M648 72 V80"/><rect class="chip" x="540" y="18" width="120" height="54" rx="4"/><circle class="led" cx="650" cy="28" r="2.2"/><text x="600" y="49" text-anchor="middle">TAOUEY</text><circle class="via" cx="180" cy="12" r="3"/><circle class="via" cx="228" cy="66" r="3"/><circle class="via" cx="90" cy="60" r="3"/><circle class="via" cx="1020" cy="12" r="3"/><circle class="via" cx="972" cy="66" r="3"/><circle class="via" cx="1110" cy="60" r="3"/><circle class="via" cx="402" cy="12" r="3"/><circle class="via" cx="798" cy="12" r="3"/></svg>
 
   <!-- ===================== RESEARCH ===================== -->
   <section id="research">
@@ -629,6 +649,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
       </div>
     </div>
   </section>
+  <svg class="circuit" viewBox="0 0 1200 90" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><path class="tr" d="M540 30 H420 L402 12 H180 L165 27 H0"/><path class="tr" d="M540 45 H300 L285 60 H90 L75 45 H0"/><path class="tr" d="M540 60 H460 L442 78 H240 L228 66"/><path class="tr" d="M660 30 H780 L798 12 H1020 L1035 27 H1200"/><path class="tr" d="M660 45 H900 L915 60 H1110 L1125 45 H1200"/><path class="tr" d="M660 60 H740 L758 78 H960 L972 66"/><path class="pulse" d="M540 30 H420 L402 12 H180 L165 27 H0" style="animation-delay:0s"/><path class="pulse b" d="M540 45 H300 L285 60 H90 L75 45 H0" style="animation-delay:-2.3s"/><path class="pulse" d="M540 60 H460 L442 78 H240 L228 66" style="animation-delay:-4.6s"/><path class="pulse" d="M660 30 H780 L798 12 H1020 L1035 27 H1200" style="animation-delay:-1.2s"/><path class="pulse b" d="M660 45 H900 L915 60 H1110 L1125 45 H1200" style="animation-delay:-3.5s"/><path class="pulse" d="M660 60 H740 L758 78 H960 L972 66" style="animation-delay:-5.8s"/><path class="pin" d="M552 18 V10 M552 72 V80"/><path class="pin" d="M564 18 V10 M564 72 V80"/><path class="pin" d="M576 18 V10 M576 72 V80"/><path class="pin" d="M588 18 V10 M588 72 V80"/><path class="pin" d="M600 18 V10 M600 72 V80"/><path class="pin" d="M612 18 V10 M612 72 V80"/><path class="pin" d="M624 18 V10 M624 72 V80"/><path class="pin" d="M636 18 V10 M636 72 V80"/><path class="pin" d="M648 18 V10 M648 72 V80"/><rect class="chip" x="540" y="18" width="120" height="54" rx="4"/><circle class="led" cx="650" cy="28" r="2.2"/><text x="600" y="49" text-anchor="middle">TAOUEY</text><circle class="via" cx="180" cy="12" r="3"/><circle class="via" cx="228" cy="66" r="3"/><circle class="via" cx="90" cy="60" r="3"/><circle class="via" cx="1020" cy="12" r="3"/><circle class="via" cx="972" cy="66" r="3"/><circle class="via" cx="1110" cy="60" r="3"/><circle class="via" cx="402" cy="12" r="3"/><circle class="via" cx="798" cy="12" r="3"/></svg>
 </main>
 
 <footer>
@@ -714,6 +735,37 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
       draw();if(sweep<cols)raf=requestAnimationFrame(step);}
     raf=requestAnimationFrame(step);
   }
+
+  /* ---- DNA helix wound around the portrait ---- */
+  var hx=document.getElementById('helix'),hc=hx.getContext('2d'),hero=hx.parentElement,fig=hero.querySelector('.portrait');
+  var hRaf=null,hVisible=true,hT0=performance.now();
+  function helix(now){
+    var dpr=window.devicePixelRatio||1,W=hero.clientWidth,H=hero.clientHeight;
+    if(hx.width!==Math.round(W*dpr)||hx.height!==Math.round(H*dpr)){hx.width=Math.round(W*dpr);hx.height=Math.round(H*dpr)}
+    hc.setTransform(dpr,0,0,dpr,0,0);hc.clearRect(0,0,W,H);
+    var hr=hero.getBoundingClientRect(),fr=fig.getBoundingClientRect();
+    var narrow=fr.width<hero.clientWidth*0.5&&window.innerWidth<760;
+    var cx=fr.left-hr.left+fr.width/2,A=Math.min(fr.width*(narrow?0.6:0.68),W-cx-8,cx-8),top=Math.max(0,fr.top-hr.top-(narrow?20:80)),bot=Math.min(H,fr.bottom-hr.top+(narrow?6:30));
+    var t=reduce?0:(now-hT0)*0.00035,k=0.019,step=4;
+    var cols=[tok('--accent'),tok('--pasteur'),tok('--amber'),tok('--cell1')],strand=tok('--ink-2');
+    function fadeAt(y){return Math.max(0,Math.min(1,(y-top)/60,(bot-y)/60))}
+    // rungs (base pairs) first, so strands sit on top
+    for(var y=top,i=0;y<=bot;y+=16,i++){var ph=y*k+t,x1=cx+A*Math.sin(ph),x2=cx-A*Math.sin(ph);
+      hc.globalAlpha=0.28*fadeAt(y);hc.strokeStyle=cols[i%4];hc.lineWidth=1.6;hc.beginPath();hc.moveTo(x1,y);hc.lineTo(x2,y);hc.stroke()}
+    // two backbones, width and opacity follow depth
+    [0,Math.PI].forEach(function(off){
+      var py=null,px=null;
+      for(var y=top;y<=bot;y+=step){var ph=y*k+t+off,x=cx+A*Math.sin(ph),z=(Math.cos(ph)+1)/2;
+        if(px!==null){hc.globalAlpha=(0.15+0.45*z)*fadeAt(y);hc.strokeStyle=strand;hc.lineWidth=0.8+1.6*z;hc.beginPath();hc.moveTo(px,py);hc.lineTo(x,y);hc.stroke()}
+        px=x;py=y}
+    });
+    hc.globalAlpha=1;
+    if(!reduce&&hVisible)hRaf=requestAnimationFrame(helix);
+  }
+  if('IntersectionObserver' in window){new IntersectionObserver(function(e){hVisible=e[0].isIntersecting;cancelAnimationFrame(hRaf);if(hVisible)hRaf=requestAnimationFrame(helix)}).observe(hero)}
+  hRaf=requestAnimationFrame(helix);
+  window.addEventListener('resize',function(){if(reduce)requestAnimationFrame(helix)});
+  themeBtn.addEventListener('click',function(){if(reduce)requestAnimationFrame(helix)});
   build();run();
   document.getElementById('gmReplay').addEventListener('click',run);
   var lastW=cv.parentElement.clientWidth;
