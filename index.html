@@ -10,7 +10,7 @@
 <meta property="og:title" content="Issa Gueye — HPC engineer & statistical genomics">
 <meta property="og:description" content="Statistical methods for African genomes, and the high-performance computing that makes them run.">
 <meta property="og:image" content="assets/img/me.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E7A66'/%3E%3Cg fill='%23F5F7F4'%3E%3Crect x='6' y='7' width='4' height='4'/%3E%3Crect x='14' y='7' width='4' height='4' opacity='.5'/%3E%3Crect x='22' y='7' width='4' height='4'/%3E%3Crect x='6' y='14' width='4' height='4' opacity='.5'/%3E%3Crect x='14' y='14' width='4' height='4'/%3E%3Crect x='22' y='14' width='4' height='4' fill='%23E0A83A'/%3E%3Crect x='6' y='21' width='4' height='4'/%3E%3Crect x='14' y='21' width='4' height='4' opacity='.5'/%3E%3Crect x='22' y='21' width='4' height='4'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23002766'/%3E%3Cg fill='%23F5F7FA'%3E%3Crect x='6' y='7' width='4' height='4'/%3E%3Crect x='14' y='7' width='4' height='4' opacity='.5'/%3E%3Crect x='22' y='7' width='4' height='4'/%3E%3Crect x='6' y='14' width='4' height='4' opacity='.5'/%3E%3Crect x='14' y='14' width='4' height='4'/%3E%3Crect x='22' y='14' width='4' height='4' fill='%23FDC300'/%3E%3Crect x='6' y='21' width='4' height='4'/%3E%3Crect x='14' y='21' width='4' height='4' opacity='.5'/%3E%3Crect x='22' y='21' width='4' height='4'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,9 +22,9 @@
 /* Layout: one left-aligned reading column (max 1120px) with an asymmetric hero,
    a full-bleed genotype-matrix band as signature, then quiet ruled sections. */
 :root{
-  --paper:#F5F7F4; --paper-2:#E8EEEA; --ink:#12201C; --ink-2:#4B5C56; --rule:#D2DBD6;
-  --accent:#0E7A66; --accent-ink:#0A5A4B; --amber:#B7791F;
-  --cell0:#DDE6E1; --cell1:#7FC0B0; --cell2:#15473E; --portrait:#0F1614;
+  --paper:#F5F7FA; --paper-2:#E9EEF6; --ink:#0B1733; --ink-2:#4A5873; --rule:#D3DBE8;
+  --accent:#004A9E; --accent-ink:#003A80; --amber:#E0A800; --pasteur:#0079C2;
+  --cell0:#DCE4F0; --cell1:#5FA6DA; --cell2:#002766; --portrait:#050A18;
   --f-display:"Newsreader","Iowan Old Style","Palatino Linotype",Georgia,serif;
   --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
@@ -32,13 +32,13 @@
   --gutter:clamp(16px,4vw,40px); --maxw:1120px;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --paper:#0D1412; --paper-2:#151F1C; --ink:#E4ECE8; --ink-2:#9EB1AA; --rule:#25332F;
-  --accent:#43C3A4; --accent-ink:#7AD9C1; --amber:#E0A83A;
-  --cell0:#1B2825; --cell1:#2F7A69; --cell2:#9FE0CF; --portrait:#070B0A; color-scheme:dark }}
+  --paper:#0A1224; --paper-2:#111C33; --ink:#E6ECF5; --ink-2:#9DAAC2; --rule:#22304C;
+  --accent:#5AA6EC; --accent-ink:#8CC3F4; --amber:#FDC300; --pasteur:#3FA3E6;
+  --cell0:#17233D; --cell1:#1F66A8; --cell2:#A9CDF2; --portrait:#030712; color-scheme:dark }}
 :root[data-theme="dark"]{
-  --paper:#0D1412; --paper-2:#151F1C; --ink:#E4ECE8; --ink-2:#9EB1AA; --rule:#25332F;
-  --accent:#43C3A4; --accent-ink:#7AD9C1; --amber:#E0A83A;
-  --cell0:#1B2825; --cell1:#2F7A69; --cell2:#9FE0CF; --portrait:#070B0A; color-scheme:dark }
+  --paper:#0A1224; --paper-2:#111C33; --ink:#E6ECF5; --ink-2:#9DAAC2; --rule:#22304C;
+  --accent:#5AA6EC; --accent-ink:#8CC3F4; --amber:#FDC300; --pasteur:#3FA3E6;
+  --cell0:#17233D; --cell1:#1F66A8; --cell2:#A9CDF2; --portrait:#030712; color-scheme:dark }
 
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -134,7 +134,7 @@ section+section{border-top:1px solid var(--rule)}
 ul.clean{list-style:none;padding:0;margin:0;display:grid;gap:.45rem}
 ul.clean li{padding-left:1rem;position:relative}
 ul.clean li::before{content:"";position:absolute;left:0;top:.72em;width:.4rem;height:1px;background:var(--ink-2)}
-.status{margin-top:2.6rem;border-left:3px solid var(--accent);padding:1rem 0 1rem 1.3rem}
+.status{margin-top:2.6rem;border-left:3px solid var(--amber);padding:1rem 0 1rem 1.3rem}
 .status .pipe{font-family:var(--f-mono);font-size:var(--s-sm);margin:.5rem 0 1rem;overflow-x:auto;white-space:nowrap}
 .status .pipe b{font-weight:500;color:var(--accent-ink)}
 .nums{display:flex;flex-wrap:wrap;gap:1.2rem 2.6rem}
@@ -147,7 +147,7 @@ ul.clean li::before{content:"";position:absolute;left:0;top:.72em;width:.4rem;he
 /* lab notebook */
 .method{counter-reset:m;list-style:none;padding:0;margin:0 0 2.8rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem 2rem}
 .method li{counter-increment:m;font-size:var(--s-sm);color:var(--ink-2);padding-top:.8rem;border-top:1px solid var(--rule)}
-.method li::before{content:counter(m);font-family:var(--f-mono);font-size:var(--s-xs);color:var(--accent);display:block;margin-bottom:.3rem}
+.method li::before{content:counter(m);font-family:var(--f-mono);font-size:var(--s-xs);color:var(--pasteur);display:block;margin-bottom:.3rem}
 .method strong{color:var(--ink);font-weight:600;display:block}
 @media (max-width:760px){.method{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:440px){.method{grid-template-columns:1fr}}
@@ -160,7 +160,7 @@ ul.clean li::before{content:"";position:absolute;left:0;top:.72em;width:.4rem;he
 .pm dt{font-family:var(--f-mono);color:var(--ink-2);text-transform:uppercase;letter-spacing:.06em;padding-top:.1rem}
 .pm dd{margin:0;color:var(--ink);font-variant-numeric:tabular-nums}
 .verdict{margin-top:auto;font:500 var(--s-xs)/1.2 var(--f-mono);letter-spacing:.04em;align-self:flex-start;padding:.35rem .55rem;border-radius:4px}
-.v-ok{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent-ink)}
+.v-ok{background:color-mix(in srgb,var(--pasteur) 16%,transparent);color:var(--accent-ink)}
 .v-gap{background:color-mix(in srgb,var(--amber) 20%,transparent);color:var(--ink)}
 .card p{font-size:var(--s-sm);color:var(--ink-2)}
 .note{margin-top:1.6rem;font-size:var(--s-xs);color:var(--ink-2);max-width:80ch}
