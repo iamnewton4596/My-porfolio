@@ -250,6 +250,16 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
 @media (max-width:1060px){.rail{width:10.5rem;right:calc(100% + 2rem)}}
 @media (max-width:760px){.rail,.mini:not(.net){display:none}}
 @media (prefers-reduced-motion: reduce){.term .cur{animation:none}}
+
+/* writing: post list, newest first */
+.posts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 3rem;border-top:1px solid var(--rule)}
+@media (max-width:760px){.posts{grid-template-columns:1fr}}
+.post{display:grid;gap:.45rem;padding-block:1.3rem;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);min-width:0}
+.post-meta{font:var(--s-xs)/1.2 var(--f-mono);color:var(--ink-2);letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.post-title{font-family:var(--f-display);font-size:1.3rem;line-height:1.25;text-wrap:balance}
+.post-more{font-size:var(--s-xs);color:var(--accent-ink)}
+.post:hover .post-title{color:var(--accent)}
+.post:hover .post-more{text-decoration:underline;text-underline-offset:3px}
 </style>
 </head>
 <body>
@@ -260,6 +270,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
     <nav class="nav" aria-label="Sections">
       <a href="#research"><span lang="en">Research</span><span lang="fr">Recherche</span></a>
       <a href="#lab"><span lang="en">Lab notebook</span><span lang="fr">Carnet de labo</span></a>
+      <a href="#writing"><span lang="en">Writing</span><span lang="fr">Écrits</span></a>
       <a href="#experience"><span lang="en">Experience</span><span lang="fr">Parcours</span></a>
       <a href="#skills"><span lang="en">Skills</span><span lang="fr">Compétences</span></a>
       <a href="#contact">Contact</a>
@@ -465,9 +476,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
           <p class="q" lang="en">Does GCC 16 beat GCC 4.8.5 on a scalar floating-point kernel?</p>
           <p class="q" lang="fr">GCC 16 bat-il GCC 4.8.5 sur un noyau flottant scalaire ?</p>
           <dl class="pm"><dt lang="en">Predicted</dt><dt lang="fr">Prédit</dt><dd lang="en">Within 10 %; cost set by the chain of dependent additions</dd><dd lang="fr">À moins de 10 % ; coût fixé par la chaîne d'additions dépendantes</dd><dt lang="en">Measured</dt><dt lang="fr">Mesuré</dt><dd lang="en">0.2 % apart, 14.3 cycles per iteration</dd><dd lang="fr">0,2 % d'écart, 14,3 cycles par itération</dd></dl>
-          <p lang="en">Right number, wrong mechanism: an addition chain would cost 3–4 cycles. Divider throughput is the likely limit.</p>
-          <p lang="fr">Bon chiffre, mauvais mécanisme : une chaîne d'additions coûterait 3 à 4 cycles. Le débit du diviseur est la limite probable.</p>
-          <span class="verdict v-gap"><span lang="en">sign gap on mechanism</span><span lang="fr">écart de sens sur le mécanisme</span></span>
+          <p lang="en">Right number, wrong mechanism. A follow-up changed one thing at a time: splitting the addition chain in four changed nothing (×0.998); replacing the division cut the time by 4.69. Divider throughput sets the cost.</p>
+          <p lang="fr">Bon chiffre, mauvais mécanisme. Une expérience de suivi a changé une seule chose à la fois : couper la chaîne d'additions en quatre ne change rien (×0,998) ; remplacer la division divise le temps par 4,69. C'est le débit du diviseur qui fixe le coût.</p>
+          <span class="verdict v-gap"><span lang="en">my model refuted, then settled</span><span lang="fr">mon modèle réfuté, puis tranché</span></span>
         </article>
         <article class="card">
           <p class="label">I/O</p>
@@ -508,6 +519,48 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
       </div>
       <p class="note" lang="en">Measured on a virtualised test cluster used to rehearse a production HPC rebuild, without root access. The notebook itself is private; full protocols are available on request.</p>
       <p class="note" lang="fr">Mesures réalisées sans droits root sur un cluster de test virtualisé servant à répéter la reconstruction d'un cluster HPC de production. Le carnet est privé ; les protocoles complets sont disponibles sur demande.</p>
+    </div>
+  </section>
+
+
+  <!-- ===================== WRITING ===================== -->
+  <section id="writing">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label"><span lang="en">Writing</span><span lang="fr">Écrits</span></p>
+        <div>
+          <h2 lang="en">Notes from the field</h2>
+          <h2 lang="fr">Notes de terrain</h2>
+          <p lang="en">I write twice a week on LinkedIn about HPC in practice, genomics for Africa and the research ecosystem in Senegal, in French and English.</p>
+          <p lang="fr">J'écris deux fois par semaine sur LinkedIn : le HPC en pratique, la génomique pour l'Afrique et l'écosystème de recherche au Sénégal, en français et en anglais.</p>
+        </div>
+      </div>
+      <div class="posts">
+        <a class="post" href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7510738261955321856/" target="_blank" rel="noopener">
+          <span class="post-meta"><time datetime="2026-09-29">29.09.2026</time> · <span lang="en">Optimisation</span><span lang="fr">Optimisation</span></span>
+          <span class="post-title" lang="en">The roofline model: why most scientific codes never reach peak performance</span>
+          <span class="post-title" lang="fr">Le roofline model&nbsp;: pourquoi la plupart des codes scientifiques n'atteignent jamais le pic de calcul</span>
+          <span class="post-more"><span lang="en">6-page carousel · Read on LinkedIn</span><span lang="fr">Carrousel de 6 pages · Lire sur LinkedIn</span> →</span>
+        </a>
+        <a class="post" href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7510396578478837760/" target="_blank" rel="noopener">
+          <span class="post-meta"><time datetime="2026-09-28">28.09.2026</time> · <span lang="en">Genomics</span><span lang="fr">Génomique</span></span>
+          <span class="post-title" lang="en">Why genotype imputation has to be rethought for Africa</span>
+          <span class="post-title" lang="fr">Pourquoi l'imputation génotypique doit être repensée pour l'Afrique</span>
+          <span class="post-more"><span lang="en">Read on LinkedIn</span><span lang="fr">Lire sur LinkedIn</span> →</span>
+        </a>
+        <a class="post" href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7508094378867851264/" target="_blank" rel="noopener">
+          <span class="post-meta"><time datetime="2026-09-22">22.09.2026</time> · <span lang="en">HPC in the field</span><span lang="fr">HPC terrain</span></span>
+          <span class="post-title" lang="en">Bringing a cluster back to working order, without sudo</span>
+          <span class="post-title" lang="fr">Remettre un cluster en état. Sans sudo.</span>
+          <span class="post-more"><span lang="en">Read on LinkedIn</span><span lang="fr">Lire sur LinkedIn</span> →</span>
+        </a>
+        <a class="post" href="https://www.linkedin.com/feed/update/urn:li:share:7506715080517091328/" target="_blank" rel="noopener">
+          <span class="post-meta"><time datetime="2026-09-18">18.09.2026</time> · <span lang="en">Back to writing</span><span lang="fr">Reprise</span></span>
+          <span class="post-title" lang="en">Engineer by day, PhD candidate by night: why I am writing again</span>
+          <span class="post-title" lang="fr">Ingénieur le jour, doctorant la nuit&nbsp;: pourquoi je reprends la plume</span>
+          <span class="post-more"><span lang="en">Read on LinkedIn</span><span lang="fr">Lire sur LinkedIn</span> →</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -607,8 +660,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
         <div>
           <h3 lang="en">Infrastructure &amp; security</h3><h3 lang="fr">Infrastructure &amp; sécurité</h3>
           <div class="chips"><span class="chip">Slurm</span><span class="chip">Linux</span><span class="chip">Bash</span><span class="chip">Environment Modules / Lmod</span><span class="chip">MUNGE</span><span class="chip">cgroups</span><span class="chip">Singularity / Apptainer</span><span class="chip">Nextflow</span><span class="chip">Git</span><span class="chip grow">SSH hardening &amp; MFA</span><span class="chip grow">auditd · CIS</span><span class="chip grow">Wazuh · Suricata</span></div>
-          <p class="hint" lang="en">Dashed: currently building, on the way to CompTIA Security+.</p>
-          <p class="hint" lang="fr">En pointillés : en cours d'acquisition, en route vers CompTIA Security+.</p>
+          <p class="hint" lang="en">Dashed: currently building. Following <em>Introduction to Security 2026</em> (Stratosphere Lab, Czech Technical University in Prague, Sep 2026 – Jan 2027), on the way to CompTIA Security+.</p>
+          <p class="hint" lang="fr">En pointillés : en cours d'acquisition. Je suis <em>Introduction to Security 2026</em> (Stratosphere Lab, Université technique de Prague, sept. 2026 – janv. 2027), en route vers CompTIA Security+.</p>
         </div>
         <div>
           <h3 lang="en">Genomics &amp; statistics</h3><h3 lang="fr">Génomique &amp; statistiques</h3>
@@ -640,6 +693,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
           <h3 lang="en">Certifications</h3><h3 lang="fr">Certifications</h3>
           <ul class="rows">
             <li><span class="y">2026</span><span lang="en"><b>Programming &amp; Optimisation on Heterogeneous Architectures</b><br><span class="d">Gray Scott School · EuroHPC, LAPP/CNRS · CPU (C++/Fortran/Python, SIMD, OpenMP) and GPU (CUDA, Kokkos, JAX, PyTorch)</span></span><span lang="fr"><b>Programmation et optimisation sur architectures hétérogènes</b><br><span class="d">Gray Scott School · EuroHPC, LAPP/CNRS · CPU (C++/Fortran/Python, SIMD, OpenMP) et GPU (CUDA, Kokkos, JAX, PyTorch)</span></span></li>
+            <li><span class="y">2026–27</span><span lang="en"><b>Introduction to Security</b> (in progress)<br><span class="d">Stratosphere Lab, Czech Technical University in Prague · online course, hands-on labs</span></span><span lang="fr"><b>Introduction to Security</b> (en cours)<br><span class="d">Stratosphere Lab, Université technique de Prague · cours en ligne, travaux pratiques</span></span></li>
             <li><span class="y">2025</span><span><b>IBM Data Science with Python</b> · <b>Google Data Science</b> · <b>DataCamp Data Scientist</b> · <b>AWS Cloud</b></span></li>
           </ul>
           <h3 lang="en" style="margin-top:1.8rem">Talks &amp; schools</h3><h3 lang="fr" style="margin-top:1.8rem">Communications &amp; écoles</h3>
@@ -685,8 +739,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
 <footer>
   <div class="wrap">
     <span>© 2026 Issa Gueye</span>
-    <span lang="en">Plain HTML and CSS, hosted on GitHub Pages. Updated September 2026.</span>
-    <span lang="fr">HTML et CSS simples, hébergé sur GitHub Pages. Mis à jour en septembre 2026.</span>
+    <span lang="en">Plain HTML and CSS, hosted on GitHub Pages. Updated October 2026.</span>
+    <span lang="fr">HTML et CSS simples, hébergé sur GitHub Pages. Mis à jour en octobre 2026.</span>
   </div>
 </footer>
 
