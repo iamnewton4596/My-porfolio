@@ -147,6 +147,7 @@ ul.clean li::before{content:"";position:absolute;left:0;top:.72em;width:.4rem;he
 .nums div{display:grid}
 .nums strong{font-family:var(--f-display);font-size:1.75rem;font-weight:500;font-variant-numeric:tabular-nums;line-height:1.1}
 .nums span{font-size:var(--s-xs);color:var(--ink-2)}
+.status-note{font-size:var(--s-sm);color:var(--ink-2);margin:0}
 .people{margin-top:2.2rem;font-size:var(--s-sm);color:var(--ink-2)}
 .people strong{color:var(--ink);font-weight:500}
 
@@ -425,13 +426,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
         </div>
 
         <div class="status">
-          <p class="label"><span lang="en">Phase 1 — reference pipeline, running on the national cluster</span><span lang="fr">Phase 1 — pipeline de référence, en production sur le cluster national</span></p>
+          <p class="label"><span lang="en">Phase 1 — reference pipeline, under validation</span><span lang="fr">Phase 1 — pipeline de référence, en cours de validation</span></p>
           <p class="pipe"><b>SHAPEIT</b> → <b>IMPUTE5</b> / <b>Beagle</b> / <b>Minimac4</b> · H3Africa v6 · hg38 · chr1–22</p>
-          <div class="nums">
-            <div><strong>303 680</strong><span lang="en">SNPs matched to the reference</span><span lang="fr">SNP appariés à la référence</span></div>
-            <div><strong>94.4 %</strong><span lang="en">overlap with H3Africa v6</span><span lang="fr">recouvrement avec H3Africa v6</span></div>
-            <div><strong>132 / 132</strong><span lang="en">chunks passing QC</span><span lang="fr">chunks validés au QC</span></div>
-          </div>
+          <p class="status-note" lang="en">Figures will be published here once validated with my supervisors.</p>
+          <p class="status-note" lang="fr">Les chiffres seront publiés ici après validation avec mes encadrants.</p>
         </div>
 
         <p class="people" lang="en">Data: Dielmo–Ndiop longitudinal cohort (Institut Pasteur de Dakar), about 1,750 individuals followed for two decades for malaria. Supervised by <strong>Pr Abdou Ka Diongue</strong> (UGB, LERSTAD), <strong>Dr Cheikh Loucoubar</strong> and <strong>Dr Aboubacry Gaye</strong> (Institut Pasteur de Dakar). Host labs: LERSTAD, PESD–IPD, CINERI.</p>
