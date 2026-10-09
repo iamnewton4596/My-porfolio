@@ -254,6 +254,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
 
 /* writing: post list, newest first */
 .posts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 3rem;border-top:1px solid var(--rule)}
+.posts>.post:first-child:nth-last-child(odd){grid-column:1/-1}
 @media (max-width:760px){.posts{grid-template-columns:1fr}}
 .post{display:grid;gap:.45rem;padding-block:1.3rem;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);min-width:0}
 .post-meta{font:var(--s-xs)/1.2 var(--f-mono);color:var(--ink-2);letter-spacing:.04em;font-variant-numeric:tabular-nums}
@@ -529,11 +530,17 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
         <div>
           <h2 lang="en">Notes from the field</h2>
           <h2 lang="fr">Notes de terrain</h2>
-          <p lang="en">I write twice a week on LinkedIn about HPC in practice, genomics for Africa and the research ecosystem in Senegal, in French and English.</p>
-          <p lang="fr">J'écris deux fois par semaine sur LinkedIn : le HPC en pratique, la génomique pour l'Afrique et l'écosystème de recherche au Sénégal, en français et en anglais.</p>
+          <p lang="en">I write twice a week on LinkedIn about HPC in practice and its security, genomics for Africa and the research ecosystem in Senegal, in French and English.</p>
+          <p lang="fr">J'écris deux fois par semaine sur LinkedIn : le HPC en pratique et sa sécurité, la génomique pour l'Afrique et l'écosystème de recherche au Sénégal, en français et en anglais.</p>
         </div>
       </div>
       <div class="posts">
+        <a class="post" href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7513232278815440898/" target="_blank" rel="noopener">
+          <span class="post-meta"><time datetime="2026-10-08">08.10.2026</time> · <span lang="en">Security</span><span lang="fr">Sécurité</span></span>
+          <span class="post-title" lang="en">Securing a job on a shared cluster: as much in the Slurm policy as in the firewall</span>
+          <span class="post-title" lang="fr">Sécurité d'un job&nbsp;: politique Slurm et pare-feu</span>
+          <span class="post-more"><span lang="en">6-page carousel · Read on LinkedIn</span><span lang="fr">Carrousel de 6 pages · Lire sur LinkedIn</span> →</span>
+        </a>
         <a class="post" href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7510738261955321856/" target="_blank" rel="noopener">
           <span class="post-meta"><time datetime="2026-09-29">29.09.2026</time> · <span lang="en">Optimisation</span><span lang="fr">Optimisation</span></span>
           <span class="post-title" lang="en">The roofline model: why most scientific codes never reach peak performance</span>
