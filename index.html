@@ -515,9 +515,27 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
           <p lang="fr">Le verdict repose sur les versions mesurées, jamais sur une topologie supposée, et permet de prouver qu'un correctif tourne vraiment après déploiement.</p>
           <span class="verdict v-ok"><span lang="en">reported to admins</span><span lang="fr">remonté aux admins</span></span>
         </article>
+        <article class="card">
+          <p class="label"><span lang="en">GPU · OpenMP offload</span><span lang="fr">GPU · OpenMP offload</span></p>
+          <p class="q" lang="en">How close does OpenMP offload get to hand-written HIP?</p>
+          <p class="q" lang="fr">Jusqu'où l'OpenMP offload approche-t-il un code HIP écrit à la main ?</p>
+          <dl class="pm"><dt lang="en">Measured</dt><dt lang="fr">Mesuré</dt><dd lang="en">Jacobi 4096²: 41.9 s on one CPU core, 1.6 s on one sixth of an MI300A, within 1.4 % of HIP; same numerical result as the CPU</dd><dd lang="fr">Jacobi 4096² : 41,9 s sur un cœur CPU, 1,6 s sur un sixième de MI300A, à 1,4 % du HIP ; même résultat numérique que le CPU</dd></dl>
+          <p lang="en">OpenMP, Kokkos and HIP all stop at the same memory ceiling, about 0.7 TB/s per GPU slice. For a bandwidth-bound kernel, memory traffic sets the time, not the programming model.</p>
+          <p lang="fr">OpenMP, Kokkos et HIP butent tous sur le même plafond mémoire, environ 0,7 To/s par tranche de GPU. Pour un noyau limité par la bande passante, c'est le trafic mémoire qui fixe le temps, pas le modèle de programmation.</p>
+          <span class="verdict v-ok"><span lang="en">same ceiling in 3 models</span><span lang="fr">même plafond dans 3 modèles</span></span>
+        </article>
+        <article class="card">
+          <p class="label"><span lang="en">Multi-GPU · profiling</span><span lang="fr">Multi-GPU · profilage</span></p>
+          <p class="q" lang="en">Where does a shallow-water code lose time on AMD GPUs?</p>
+          <p class="q" lang="fr">Où un code shallow-water perd-il du temps sur GPU AMD ?</p>
+          <dl class="pm"><dt lang="en">Measured</dt><dt lang="fr">Mesuré</dt><dd lang="en">Main kernel from 55 % to 84 % of HBM bandwidth after profiling; 77 % parallel efficiency on 4 GPUs; GPU-aware MPI at 110 GB/s</dd><dd lang="fr">Noyau principal de 55 % à 84 % du débit HBM après profilage ; efficacité parallèle de 77 % sur 4 GPU ; MPI GPU-aware à 110 Go/s</dd></dl>
+          <p lang="en">rocprofv3 and rocprof-compute pointed to the reduction, rewritten 7× faster. rocgdb found a memory fault and a grid-sizing bug; an MPICH crash was traced from its call stack and worked around.</p>
+          <p lang="fr">rocprofv3 et rocprof-compute ont désigné la réduction, réécrite 7 fois plus rapide. rocgdb a trouvé une faute mémoire et un bogue de dimensionnement de grille ; un plantage MPICH a été remonté jusqu'à sa pile d'appels et contourné.</p>
+          <span class="verdict v-ok"><span lang="en">bottleneck found, then fixed</span><span lang="fr">goulot trouvé, puis levé</span></span>
+        </article>
       </div>
-      <p class="note" lang="en">Measured on a virtualised test cluster used to rehearse a production HPC rebuild, without root access. The notebook itself is private; full protocols are available on request.</p>
-      <p class="note" lang="fr">Mesures réalisées sans droits root sur un cluster de test virtualisé servant à répéter la reconstruction d'un cluster HPC de production. Le carnet est privé ; les protocoles complets sont disponibles sur demande.</p>
+      <p class="note" lang="en">Measured on a virtualised test cluster used to rehearse a production HPC rebuild, without root access. The two GPU entries were measured on AMD Instinct MI300A (AMD Accelerator Cloud) during the AMD course in November 2026. The notebook itself is private; full protocols are available on request.</p>
+      <p class="note" lang="fr">Mesures réalisées sans droits root sur un cluster de test virtualisé servant à répéter la reconstruction d'un cluster HPC de production. Les deux entrées GPU ont été mesurées sur AMD Instinct MI300A (AMD Accelerator Cloud) pendant la formation AMD de novembre 2026. Le carnet est privé ; les protocoles complets sont disponibles sur demande.</p>
     </div>
   </section>
 
@@ -660,7 +678,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
         </div>
         <div>
           <h3 lang="en">GPU &amp; machine learning</h3><h3 lang="fr">GPU &amp; apprentissage</h3>
-          <div class="chips"><span class="chip">CUDA</span><span class="chip">Kokkos</span><span class="chip">PyTorch</span><span class="chip">JAX</span><span class="chip">VAE</span><span class="chip">Transformers</span><span class="chip">diffusion</span><span class="chip">mixed precision</span></div>
+          <div class="chips"><span class="chip">CUDA</span><span class="chip">HIP / ROCm</span><span class="chip">OpenMP offload</span><span class="chip">Kokkos</span><span class="chip">RCCL</span><span class="chip">rocprof · rocgdb</span><span class="chip">PyTorch</span><span class="chip">JAX</span><span class="chip">VAE</span><span class="chip">Transformers</span><span class="chip">diffusion</span><span class="chip">mixed precision</span></div>
         </div>
         <div>
           <h3 lang="en">Infrastructure &amp; security</h3><h3 lang="fr">Infrastructure &amp; sécurité</h3>
@@ -697,12 +715,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
         <div>
           <h3 lang="en">Certifications</h3><h3 lang="fr">Certifications</h3>
           <ul class="rows">
+            <li><span class="y">2026</span><span lang="en"><b>Unlocking HPC Performance with AMD Tools &amp; GPUs</b><br><span class="d">AMD · CASTIEL 3 · NCC France (CC-FR, Teratec) · certificate issued by the Barcelona Supercomputing Center · 4–6 Nov 2026, online, 12 h, intermediate to advanced · ROCm, HIP and OpenMP offload, MPI and RCCL, profiling and debugging, hands-on on AMD Instinct MI300A · <a href="assets/cert/Issa_Gueye_AMD_HPC_certificate_2026-11.pdf" target="_blank" rel="noopener">certificate (PDF)</a></span></span><span lang="fr"><b>Unlocking HPC Performance with AMD Tools &amp; GPUs</b><br><span class="d">AMD · CASTIEL 3 · NCC France (CC-FR, Teratec) · certificat délivré par le Barcelona Supercomputing Center · 4–6 nov. 2026, en ligne, 12 h, niveau intermédiaire à avancé · ROCm, HIP et OpenMP offload, MPI et RCCL, profilage et débogage, travaux pratiques sur AMD Instinct MI300A · <a href="assets/cert/Issa_Gueye_AMD_HPC_certificate_2026-11.pdf" target="_blank" rel="noopener">certificat (PDF)</a></span></span></li>
             <li><span class="y">2026</span><span lang="en"><b>Programming &amp; Optimisation on Heterogeneous Architectures</b><br><span class="d">Gray Scott School · EuroHPC, LAPP/CNRS · CPU (C++/Fortran/Python, SIMD, OpenMP) and GPU (CUDA, Kokkos, JAX, PyTorch)</span></span><span lang="fr"><b>Programmation et optimisation sur architectures hétérogènes</b><br><span class="d">Gray Scott School · EuroHPC, LAPP/CNRS · CPU (C++/Fortran/Python, SIMD, OpenMP) et GPU (CUDA, Kokkos, JAX, PyTorch)</span></span></li>
             <li><span class="y">2026–27</span><span lang="en"><b>Introduction to Security</b> (in progress)<br><span class="d">Stratosphere Lab, Czech Technical University in Prague · online course, hands-on labs</span></span><span lang="fr"><b>Introduction to Security</b> (en cours)<br><span class="d">Stratosphere Lab, Université technique de Prague · cours en ligne, travaux pratiques</span></span></li>
             <li><span class="y">2025</span><span><b>IBM Data Science with Python</b> · <b>Google Data Science</b> · <b>DataCamp Data Scientist</b> · <b>AWS Cloud</b></span></li>
           </ul>
           <h3 lang="en" style="margin-top:1.8rem">Talks &amp; schools</h3><h3 lang="fr" style="margin-top:1.8rem">Communications &amp; écoles</h3>
           <ul class="rows">
+            <li><span class="y">2027</span><span lang="en"><em>Artificial Intelligence for Science with AMD</em>, CC-FR Teratec · CASTIEL 3, 19–22 Jan (registered)</span><span lang="fr"><em>Artificial Intelligence for Science with AMD</em>, CC-FR Teratec · CASTIEL 3, 19–22 janv. (inscription validée)</span></li>
             <li><span class="y">2026</span><span lang="en">SDSAC Workshop, AIMS Senegal (submitted)</span><span lang="fr">Atelier SDSAC, AIMS Sénégal (soumis)</span></li>
             <li><span class="y">2025</span><span lang="en">Machine Learning Summer School (MLSS) · International Conference on Probability and Statistics</span><span lang="fr">Machine Learning Summer School (MLSS) · Conférence internationale de probabilités et statistique</span></li>
             <li><span class="y">2023</span><span lang="en">“Option pricing with Black–Scholes extensions”, AIMS Senegal</span><span lang="fr">« Évaluation d'options et extensions de Black–Scholes », AIMS Sénégal</span></li>
@@ -744,8 +764,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-be
 <footer>
   <div class="wrap">
     <span>© 2026 Issa Gueye</span>
-    <span lang="en">Plain HTML and CSS, hosted on GitHub Pages. Updated October 2026.</span>
-    <span lang="fr">HTML et CSS simples, hébergé sur GitHub Pages. Mis à jour en octobre 2026.</span>
+    <span lang="en">Plain HTML and CSS, hosted on GitHub Pages. Updated November 2026.</span>
+    <span lang="fr">HTML et CSS simples, hébergé sur GitHub Pages. Mis à jour en novembre 2026.</span>
   </div>
 </footer>
 
